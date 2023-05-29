@@ -7,3 +7,8 @@ def adicionar_produto(produtos, nome, quantidade, valor_compra, valor_venda):
     }
     produtos.append(novo_produto)
     print("Produto adicionado com sucesso!")
+
+# lista_produtos = []
+
+# lista após a adição
+print(lista_produtos)
