@@ -1,0 +1,4 @@
+lista_produtos = []
+
+adicionar_produto(lista_produtos, 'Camiseta', 10, 20.0, 40.0)
+adicionar_produto(lista_produtos, 'Calça', 5, 50.0, 100.0)
