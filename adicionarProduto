@@ -1,0 +1,9 @@
+def adicionar_produto(produtos, nome, quantidade, valor_compra, valor_venda):
+    novo_produto = {
+        'nome': nome,
+        'quantidade': quantidade,
+        'valor_compra': valor_compra,
+        'valor_venda': valor_venda
+    }
+    produtos.append(novo_produto)
+    print("Produto adicionado com sucesso!")
