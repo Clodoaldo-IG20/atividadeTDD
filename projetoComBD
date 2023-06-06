@@ -1,0 +1,60 @@
+from flask import Flask, jsonify, request
+
+import sqlite3
+banco = sqlite3.connect('projeto_bandodedados.db', check_same_thread=False)
+cursor = banco.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS produtos (id integer primary key AUTOINCREMENT, nome text, quantidade integer, valor real)")
+
+app = Flask(__name__)
+
+# mapear dados da tabela
+def mapear_produto_para_api(row):
+    return { 'id': row[0], 'nome': row[1], 'quantidade': row[2], 'valor': row[3] }
+
+def mapear_produtos_para_api(rows):
+    produtos_api = []
+    for row in rows:
+        produtos_api.append(mapear_produto_para_api(row))
+
+    return produtos_api
+
+# Consultar(todos)
+@app.route('/produtos',methods=['GET'])
+def obter_produtos():
+    cursor.execute("SELECT * FROM produtos")
+    return jsonify(mapear_produtos_para_api(cursor.fetchall()))
+
+# Consultar(id)
+@app.route('/produtos/<int:id>',methods=['GET'])
+def obter_livro_por_id(id):
+    cursor.execute("SELECT * FROM produtos WHERE id = " + str(id))
+    produtos_bancodedados = mapear_produtos_para_api(cursor.fetchall())
+    if(len(produtos_bancodedados) == 0):
+        return "Produto não encontrado", 404
+    return jsonify(produtos_bancodedados[0])
+
+# Editar
+@app.route('/produtos/<int:id>',methods=['PUT'])
+def editar_livro_por_id(id):
+    data = request.get_json()
+    cursor.execute("UPDATE produtos SET nome = '" + data['nome'] + "', quantidade = " + str(data['quantidade']) + ", valor = " + str(data['valor']) + " WHERE id = " + str(id))
+    banco.commit()
+    return "Produto atualizado com sucesso"
+        
+# Criar
+@app.route('/produtos',methods=['POST'])
+def incluir_novo_livro():
+    data = request.get_json()
+    cursor.execute("INSERT INTO produtos (nome, quantidade, valor) VALUES('" + data["nome"] + "'," + str(data["quantidade"]) + "," + str(data["valor"]) + ")")
+    banco.commit()
+    return "Produto criado com sucesso"
+
+# Excluir
+@app.route('/produtos/<int:id>',methods=['DELETE'])
+def excluir_livro(id):
+    cursor.execute("DELETE FROM produtos WHERE id = " + str(id))
+    banco.commit()
+    return "Produto deletado com sucesso"
+
+app.run(port=5000,host='localhost',debug=True)
+banco.commit()
