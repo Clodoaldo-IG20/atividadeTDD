@@ -1,1 +1,154 @@
+Funções:
+Adicionar um produto
+Atualizar um produto
+Deletar um produto
+Consultar um produto
+Listar todos os produtos
+
+Caso de uso adicionar produto
+
+Objetivo: registrar um novo produto no sistema
+
+Atores: funcionário
+
+Pré-condição: Não há
+
+Pós-condição: produto registrado
+
+Fluxo principal de eventos:
+1. o funcionário registra as informações do produto
+2. o funcionário salva os dados submetendo ao botão salvar
+3. o sistema cadastra 
+4. uma confirmação é emitida 
+5. o caso de uso termina
+
+Fluxos alternativos:
+Bloqueio: o produto já foi registrado, o sistema emite uma mensagem e o produto não pode ser cadastrado. 
+Cancelamento: o funcionário pode cancelar a operação a qualquer momento
+
+Cenário principal: Inclusão de novo produto 
+
+Cenários secundários: Bloqueio e Cancelamento
+
+Caso de uso listar produtos
+
+Objetivo: listar todos os produtos cadastrados no sistema
+
+Atores: funcionário
+
+Pré-condição: produtos cadastrados
+
+Pós-condição: lista completa dos produtos registrado
+
+Fluxo principal de eventos:
+1. o funcionário solicita a listagem de produtos
+2. o sistema busca todos os produtos cadastrados
+3. a lista de produtos é exibida
+4. o funcionário pode solicitar a impressão da lista 
+5. o caso de uso termina
+
+Fluxos alternativos:
+Sem produtos cadastrados: não há produtos registrados, o sistema emite uma mensagem e não é realizada a listagem de produtos. 
+Cancelamento: o funcionário pode cancelar a operação a qualquer momento
+
+Cenário principal: Listagem dos produtos
+
+Cenários secundários: Bloqueio e Cancelamento
+
+Caso de uso atualizar produto
+
+Objetivo: atualizar um produto cadastrado no sistema
+
+Atores: funcionário
+
+Pré-condição: produto cadastrado
+
+Pós-condição: produto com informações atualizadas
+
+Fluxo principal de eventos:
+1. o funcionário informa o parâmetro para busca do produto
+2. o sistema busca os produtos que atendem ao parâmetro de entrada e exibe os dados
+3. o funcionário seleciona o produto
+4. o funcionário registra as novas informações do produto
+5. o funcionário salva os dados submetendo ao botão salvar
+6. o sistema atualiza as informações 
+7. uma confirmação é emitida 
+8. o caso de uso termina
+
+Fluxos alternativos:
+Sem produto cadastrado: não há registro do produto solicitado, o sistema emite uma mensagem e não é realizada a atualização das informações do produto. 
+Cancelamento: o funcionário pode cancelar a operação a qualquer momento
+
+Cenário principal: Dados do produto atualizado
+
+Cenários secundários: Bloqueio e Cancelamento
+
+
+
+Caso de Uso deletar produto
+Atores: Funcionário
+Pré-condição:
+O funcionário está autenticado no sistema.
+O produto a ser excluído está cadastrado no sistema.
+
+Pós-condição:
+O produto é removido com sucesso do sistema.
+Os dados relacionados ao produto são removidos permanentemente.
+
+Fluxo Principal de Eventos:
+O funcionário seleciona a opção de gerenciamento de produtos no sistema.
+O sistema exibe a lista de produtos disponíveis.
+O funcionário seleciona o produto a ser excluído.
+O sistema exibe os detalhes do produto selecionado.
+O funcionário seleciona a opção "Excluir produto".
+O sistema exibe uma mensagem de confirmação de exclusão.
+O funcionário confirma a exclusão do produto.
+O sistema remove o produto do sistema e exibe uma mensagem de sucesso.
+
+Fluxo Secundário de Eventos:
+No passo 6, se o funcionário não desejar excluir o produto, o caso de uso é encerrado sem nenhuma alteração.
+Fluxos Alternativos:
+No passo 3, se não houver produtos disponíveis, o sistema exibe uma mensagem indicando que não existem produtos cadastrados e o caso de uso é encerrado.
+No passo 7, se ocorrer algum erro durante a exclusão do produto, o sistema exibe uma mensagem de erro e o caso de uso é encerrado.
+Cenário Principal:
+Funcionário: seleciona opção de gerenciamento de produtos
+Sistema: exibe lista de produtos
+Funcionário: seleciona produto a ser excluído
+Sistema: exibe detalhes do produto selecionado
+Funcionário: seleciona opção "Excluir produto"
+Sistema: exibe mensagem de confirmação de exclusão
+Funcionário: confirma exclusão do produto
+Sistema: remove o produto e exibe mensagem de sucesso
+Cenário Secundário:
+Funcionário: seleciona opção de gerenciamento de produtos
+Sistema: exibe lista de produtos
+Funcionário: seleciona produto a ser excluído
+Sistema: exibe detalhes do produto selecionado
+Funcionário: seleciona opção "Excluir produto"
+Sistema: exibe mensagem de confirmação de exclusão
+Funcionário: cancela exclusão do produto
+Sistema: encerra o caso de uso sem nenhuma alteração
+
+Caso de Uso: Listar Produtos
+Objetivo: Este caso de uso descreve o processo de listagem de produtos no sistema.
+Atores: Funcionário
+Pré-condição:
+O funcionário está autenticado no sistema.
+
+Pós-condição:
+A lista de produtos é exibida ao funcionário.
+
+Fluxo Principal de Eventos:
+O funcionário seleciona a opção de gerenciamento de produtos no sistema.
+O sistema exibe a lista de produtos disponíveis.
+Fluxos Alternativos:
+No passo 2, se não houver produtos disponíveis, o sistema exibe uma mensagem indicando que não existem produtos cadastrados.
+Cenário Principal:
+Funcionário: seleciona opção de gerenciamento de produtos
+Sistema: exibe lista de produtos
+
+Cenário Alternativo:
+Funcionário: seleciona opção de gerenciamento de produtos
+Sistema: exibe mensagem indicando que não existem produtos cadastrados
+
 
