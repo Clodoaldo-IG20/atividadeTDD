@@ -26,7 +26,7 @@ def obter_produtos():
 
 # Consultar(id)
 @app.route('/produtos/<int:id>',methods=['GET'])
-def obter_livro_por_id(id):
+def obter_produto_por_id(id):
     cursor.execute("SELECT * FROM produtos WHERE id = " + str(id))
     produtos_bancodedados = mapear_produtos_para_api(cursor.fetchall())
     if(len(produtos_bancodedados) == 0):
@@ -35,7 +35,7 @@ def obter_livro_por_id(id):
 
 # Editar
 @app.route('/produtos/<int:id>',methods=['PUT'])
-def editar_livro_por_id(id):
+def editar_produto_por_id(id):
     data = request.get_json()
     cursor.execute("UPDATE produtos SET nome = '" + data['nome'] + "', quantidade = " + str(data['quantidade']) + ", valor = " + str(data['valor']) + " WHERE id = " + str(id))
     banco.commit()
@@ -43,7 +43,7 @@ def editar_livro_por_id(id):
         
 # Criar
 @app.route('/produtos',methods=['POST'])
-def incluir_novo_livro():
+def incluir_novo_produto():
     data = request.get_json()
     cursor.execute("INSERT INTO produtos (nome, quantidade, valor) VALUES('" + data["nome"] + "'," + str(data["quantidade"]) + "," + str(data["valor"]) + ")")
     banco.commit()
@@ -51,7 +51,7 @@ def incluir_novo_livro():
 
 # Excluir
 @app.route('/produtos/<int:id>',methods=['DELETE'])
-def excluir_livro(id):
+def excluir_produto(id):
     cursor.execute("DELETE FROM produtos WHERE id = " + str(id))
     banco.commit()
     return "Produto deletado com sucesso"
